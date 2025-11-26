@@ -116,6 +116,7 @@ public:
 
     void Print()
     {
+        Transport::Print();
         cout << "It have wheel?: " << endl;
     }
 
@@ -130,6 +131,119 @@ public:
     }
 };
 
+class Car : public Ground
+{
+protected:
+    string color;
+public:
+    Car() {}
+    Car(string c)
+    {
+        color = c;
+    }
+
+    void Input()
+    {
+		Ground::Input();
+        cout << "Car color?: ";
+        cin >> color;
+    }
+
+    void Print()
+    {
+        cout << "=================Car=================" << endl;
+		Ground::Print();
+		cout << "Car color?: " << endl;
+        cout << "=====================================" << endl;
+
+    }
+
+    string GetColor()
+    {
+        return color;
+    }
+
+    string SetColor(string c)
+    {
+        color = c;
+    }
+};
+
+class Train : public Ground
+{
+protected:
+    int amountOfCarriage;
+public:
+    Train() {}
+    Train(int aOC)
+    {
+        amountOfCarriage = aOC;
+    }
+
+    void Input()
+    {
+        Ground::Input();
+        cout << "Amount of carriage?: ";
+        cin >> amountOfCarriage;
+    }
+
+    void Print()
+    {
+        cout << "=================Train=================" << endl;
+        Ground::Print();
+        cout << "Amount of carriage: " << endl;
+        cout << "=======================================" << endl;
+
+    }
+
+    int GetAmountOfCarriage()
+    {
+        return amountOfCarriage;
+    };
+
+    void SetAmountOfCarriage(int aOC)
+    {
+        if (aOC >= 1) amountOfCarriage = aOC;
+    }
+};
+
+class Truck : public Ground
+{
+protected:
+    double maxWeight;
+public:
+    Truck() {}
+    Truck(int mW)
+    {
+        maxWeight = mW;
+    }
+
+    void Input()
+    {
+        Ground::Input();
+        cout << "How much truck can drive?: ";
+        cin >> maxWeight;
+    }
+
+    void Print()
+    {
+        cout << "=================Truck=================" << endl;
+        Ground::Print();
+        cout << "It can drive: " << endl;
+        cout << "=======================================" << endl;
+
+    }
+
+    int GetMaxWeight()
+    {
+        return maxWeight;
+    };
+
+    void SetMaxWeight(int mW)
+    {
+        if (mW >= 5) maxWeight = mW;
+    }
+};
 
 //======================================================================================
 
@@ -167,6 +281,119 @@ public:
     }
 };
 
+class Tanker : public Water
+{
+protected:
+    double maxWeight;
+public:
+    Tanker() {}
+    Tanker(double mW)
+    {
+        maxWeight = mW;
+    }
+
+    void Input()
+    {
+        Water::Input();
+        cout << "Max weight?: ";
+        cin >> maxWeight;
+    }
+
+    void Print()
+    {
+        cout << "=================Tanker=================" << endl;
+        Water::Print();
+        cout << "It can carry: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetMaxWeight()
+    {
+        return maxWeight;
+    };
+
+    void SetMaxWeight(double mW)
+    {
+        if (mW >= 500) maxWeight = mW;
+    }
+};
+
+class Ship : public Water
+{
+protected:
+    int amountOfEngine;
+public:
+    Ship() {}
+    Ship(int aOE)
+    {
+        amountOfEngine = aOE;
+    }
+
+    void Input()
+    {
+        Water::Input();
+        cout << "Amount of engine?: ";
+        cin >> amountOfEngine;
+    }
+
+    void Print()
+    {
+        cout << "=================Tanker=================" << endl;
+        Water::Print();
+        cout << "Amount of engine: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetAmountOfEngine()
+    {
+        return amountOfEngine;
+    };
+
+    void SetAmountOfEngine(int aOE)
+    {
+        if (aOE >= 1) amountOfEngine = aOE;
+    }
+};
+
+class MotorShip : public Water
+{
+protected:
+    int amountOfPipe;
+public:
+    MotorShip() {}
+    MotorShip(int aOP)
+    {
+        amountOfPipe = aOP;
+    }
+
+    void Input()
+    {
+        Water::Input();
+        cout << "Amount of engine?: ";
+        cin >> amountOfPipe;
+    }
+
+    void Print()
+    {
+        cout << "===============MotorShip================" << endl;
+        Water::Print();
+        cout << "Amount of pipe: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetAmountOfPipe()
+    {
+        return amountOfPipe;
+    };
+
+    void SetAmountOfPipe(int aOP)
+    {
+        if (aOP >= 1) amountOfPipe = aOP;
+    }
+};
 
 //======================================================================================
 
@@ -204,12 +431,137 @@ public:
     }
 };
 
-int main() 
+
+class Plane : public Air
 {
-    /*Transport* transport = nullptr;
+protected:
+    double wingLenght;
+public:
+    Plane() {}
+    Plane(double wL)
+    {
+        wingLenght = wL;
+    }
+
+    void Input()
+    {
+        Air::Input();
+        cout << "Wing Lenght?: ";
+        cin >> wingLenght;
+    }
+
+    void Print()
+    {
+        cout << "=================Plane==================" << endl;
+        Air::Print();
+        cout << "Wing Lenght: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetWingLenght()
+    {
+        return wingLenght;
+    };
+
+    void SetWingLenght(double wL)
+    {
+        if (wL >= 25) wingLenght = wL;
+    }
+};
+
+class Helicopter : public Air
+{
+protected:
+    int amountOfPropellers;
+public:
+    Helicopter() {}
+    Helicopter(int wL)
+    {
+        amountOfPropellers = wL;
+    }
+
+    void Input()
+    {
+        Air::Input();
+        cout << "Amount of propellers?: ";
+        cin >> amountOfPropellers;
+    }
+
+    void Print()
+    {
+        cout << "==============Helicopter================" << endl;
+        Air::Print();
+        cout << "Amount of propellers: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetAmountOfPropellers()
+    {
+        return amountOfPropellers;
+    };
+
+    void SetAmountOfPropellers(int aOP)
+    {
+        if (aOP >= 1) amountOfPropellers = aOP;
+    }
+};
+
+class Airship : public Air
+{
+protected:
+    int balloonLenght;
+public:
+    Airship() {}
+    Airship(int bL)
+    {
+        balloonLenght = bL;
+    }
+
+    void Input()
+    {
+        Air::Input();
+        cout << "Balloon lenght?: ";
+        cin >> balloonLenght;
+    }
+
+    void Print()
+    {
+        cout << "================Airship=================" << endl;
+        Air::Print();
+        cout << "Balloon lenght: " << endl;
+        cout << "========================================" << endl;
+
+    }
+
+    int GetBalloonLenght()
+    {
+        return balloonLenght;
+    };
+
+    void SetBalloonLenght(int bL)
+    {
+        if (bL >= 100) balloonLenght = bL;
+    }
+};
+
+
+//======================================================================================
+int main()
+{
+    Transport* transport = nullptr;
 
     int choice = 0;
     cout << "1. Car" << endl;
+    cout << "2. Train" << endl;
+    cout << "3. Truck" << endl;
+    cout << "4. Tanker" << endl;
+    cout << "5. Ship" << endl;
+    cout << "6. Motor Ship" << endl;
+    cout << "7. Plane" << endl;
+    cout << "8. Helicopter" << endl;
+    cout << "9. Airship" << endl;
     cin >> choice;
 
     switch (choice)
@@ -218,5 +570,45 @@ int main()
         transport = new Car;
         transport->Input();
         break;
-    }*/
-}
+    case 2:
+        transport = new Train;
+        transport->Input();
+        break;
+    case 3:
+        transport = new Truck;
+        transport->Input();
+        break;
+    case 4:
+        transport = new Tanker;
+        transport->Input();
+        break;
+    case 5:
+        transport = new Ship;
+        transport->Input();
+        break;
+    case 6:
+        transport = new MotorShip;
+        transport->Input();
+        break;
+    case 7:
+        transport = new Plane;
+        transport->Input();
+        break;
+    case 8:
+        transport = new Helicopter;
+        transport->Input();
+        break;
+    case 9:
+        transport = new Airship;
+        transport->Input();
+        break;
+    default:
+        cout << "Nuh huh!" << endl;
+        break;
+    }
+    
+
+	transport->Print();
+    delete transport;
+	return 0;
+};
